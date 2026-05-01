@@ -21,7 +21,7 @@ const FEATURES = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-black/50 border-y border-white/5">
+    <section className="py-24 bg-black/20 border-y border-white/5">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           {FEATURES.map((feature, idx) => (

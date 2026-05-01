@@ -12,6 +12,8 @@ import Catering from "./components/Catering";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingOrderButton from "./components/FloatingOrderButton";
+import PromoBanner from "./components/PromoBanner";
+import OrderCallToAction from "./components/OrderCallToAction";
 import { motion, useScroll, useSpring } from "motion/react";
 
 export default function App() {
@@ -23,16 +25,30 @@ export default function App() {
   });
 
   return (
-    <div className="relative font-sans text-cream bg-charcoal selection:bg-gold selection:text-charcoal min-h-screen">
+    <div className="relative font-sans text-cream selection:bg-gold selection:text-charcoal min-h-screen bg-charcoal">
+      {/* Global Background Image with Overlay */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed opacity-30 grayscale-[0.1]"
+          style={{ backgroundImage: `url('https://i.postimg.cc/h4Nfdsdk/log-holy.jpg')` }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/90 via-charcoal/80 to-charcoal/95" aria-hidden="true" />
+      </div>
+
       {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] bg-gold z-[100] origin-left"
         style={{ scaleX }}
       />
 
-      <Navbar />
+      <div className="sticky top-0 z-50">
+        <PromoBanner />
+        <Navbar />
+      </div>
       
       <main>
+        <OrderCallToAction />
         <Hero />
         <WhyChooseUs />
         <About />

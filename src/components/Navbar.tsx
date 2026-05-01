@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ShoppingBag, UtensilsCrossed } from "lucide-react";
-import { TOAST_ORDER_LINK } from "../constants";
+import { Menu, X, ShoppingBag } from "lucide-react";
+import { TOAST_ORDER_LINK, LOGO_URL } from "../constants";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,36 +25,51 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? "py-4 glass border-b border-white/10" : "py-8 bg-transparent"
+      className={`relative w-full z-50 transition-all duration-500 ${
+        isScrolled ? "py-4 glass border-b border-white/10" : "py-8 bg-black/20 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="group">
-          <span className="font-serif text-xl md:text-2xl tracking-tighter text-cream group-hover:text-gold transition-colors duration-300">
-            HOLY LAND <span className="italic font-light">GRILL</span>
-          </span>
+        <a href="#home" className="group flex items-center h-12 md:h-16">
+          <div className="relative h-full">
+            <img 
+              src={LOGO_URL} 
+              alt="Holy Land Grill Logo" 
+              className="h-full w-auto object-contain brightness-110 contrast-125"
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement?.querySelector('.text-fallback')?.classList.remove('hidden');
+              }}
+            />
+            {/* Fallback Text if Image Fails */}
+            <span className="text-fallback hidden font-serif text-xl md:text-2xl tracking-tighter text-cream group-hover:text-gold transition-colors duration-300">
+              HOLY LAND <span className="italic font-light">GRILL</span>
+            </span>
+          </div>
         </a>
 
-        {/* Desktop Links */}
+        {/* Desktop Links - Right Aligned */}
         <div className="hidden lg:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-xs uppercase tracking-[0.2em] font-semibold text-cream/70 hover:text-gold transition-colors duration-300"
-            >
-              {link.name}
-            </a>
-          ))}
+          <div className="flex items-center gap-10">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-[10px] uppercase tracking-[0.3em] font-bold text-cream/70 hover:text-gold transition-colors duration-300"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
           <a
             href={TOAST_ORDER_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 border border-gold text-gold text-xs uppercase tracking-[0.2em] font-bold hover:bg-gold hover:text-charcoal transition-all duration-300 flex items-center gap-2"
+            className="px-6 py-3 border border-gold text-gold text-[10px] uppercase tracking-[0.2em] font-black hover:bg-gold hover:text-charcoal transition-all duration-300 flex items-center gap-3"
           >
-            <ShoppingBag className="w-4 h-4" />
+            <ShoppingBag className="w-3.5 h-3.5" />
             Order Online
           </a>
         </div>

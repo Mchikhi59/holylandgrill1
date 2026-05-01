@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 export default function About() {
   return (
-    <section id="about" className="py-32 relative overflow-hidden bg-charcoal">
+    <section id="about" className="py-32 relative overflow-hidden bg-transparent">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-olive/5 -skew-x-12 transform translate-x-1/2" />
       
@@ -24,7 +24,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-left">
             <div>
               <p className="text-cream/70 text-2xl leading-relaxed font-light italic mb-8">
-                "Holy Land Grill serves authentic Mediterranean street food made fresh daily with bold flavors, quality ingredients, and traditional recipes."
+                "Holy Land Grill serves authentic Mediterranean food made fresh daily with bold flavors, quality ingredients, and traditional recipes."
               </p>
             </div>
             <div>

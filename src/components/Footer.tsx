@@ -1,5 +1,5 @@
-import { Instagram, Facebook, Twitter } from "lucide-react";
-import { TIKTOK_LINK, FACEBOOK_LINK } from "../constants";
+import { Instagram, Facebook, Twitter, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { LOGO_URL, TIKTOK_LINK, FACEBOOK_LINK, PHONE_NUMBER, EMAIL, ADDRESS, HOURS } from "../constants";
 
 const TikTok = ({ className }: { className?: string }) => (
   <svg 
@@ -16,34 +16,104 @@ const TikTok = ({ className }: { className?: string }) => (
 
 export default function Footer() {
   return (
-    <footer className="py-12 bg-black border-t border-white/5">
+    <footer className="pt-20 pb-10 bg-transparent border-t border-white/5 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="font-serif text-xl tracking-tighter text-cream">
-            HOLY LAND <span className="italic font-light text-gold">GRILL</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          {/* Brand */}
+          <div>
+            <div className="h-12 w-auto mb-6">
+              <img 
+                src={LOGO_URL} 
+                alt="Holy Land Grill Logo" 
+                className="h-full w-auto object-contain brightness-110"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement?.querySelector('.text-fallback')?.classList.remove('hidden');
+                }}
+              />
+              <div className="text-fallback hidden font-serif text-2xl tracking-tighter text-cream">
+                HOLY LAND <span className="italic font-light text-gold">GRILL</span>
+              </div>
+            </div>
+            <p className="text-cream/40 text-sm leading-relaxed mb-8 max-w-xs lowercase">
+              Premium Mediterranean street food crafted with passion and authentic family recipes. Quality you can taste in every bite.
+            </p>
+            <div className="flex gap-4">
+              {[
+                { Icon: Instagram, href: "#" },
+                { Icon: Facebook, href: FACEBOOK_LINK },
+                { Icon: TikTok, href: TIKTOK_LINK }
+              ].map(({ Icon, href }, i) => (
+                <a 
+                  key={i} 
+                  href={href} 
+                  target={href !== "#" ? "_blank" : undefined}
+                  rel={href !== "#" ? "noopener noreferrer" : undefined}
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-cream/40 hover:bg-gold hover:text-charcoal transition-all duration-300"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="flex gap-6">
-            {[
-              { Icon: Instagram, href: "#" },
-              { Icon: Facebook, href: FACEBOOK_LINK },
-              { Icon: Twitter, href: "#" },
-              { Icon: TikTok, href: TIKTOK_LINK }
-            ].map(({ Icon, href }, i) => (
-              <a 
-                key={i} 
-                href={href} 
-                target={href !== "#" ? "_blank" : undefined}
-                rel={href !== "#" ? "noopener noreferrer" : undefined}
-                className="text-cream/40 hover:text-gold transition-colors duration-300"
-              >
-                <Icon className="w-5 h-5" />
-              </a>
-            ))}
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-gold uppercase tracking-widest text-xs font-bold mb-8">Location & Contact</h4>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <MapPin className="w-4 h-4 text-gold shrink-0 mt-1" />
+                <p className="text-cream/60 text-sm leading-relaxed lowercase">{ADDRESS}</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Phone className="w-4 h-4 text-gold shrink-0" />
+                <p className="text-cream/60 text-sm">{PHONE_NUMBER}</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Mail className="w-4 h-4 text-gold shrink-0" />
+                <p className="text-cream/60 text-sm lowercase">{EMAIL}</p>
+              </div>
+            </div>
           </div>
-          
-          <div className="text-cream/40 text-[10px] uppercase tracking-[0.2em]">
-            Holy Land Grill © 2026 • Premium Mediterranean Street Food
+
+          {/* Opening Hours */}
+          <div className="lg:col-span-1">
+            <h4 className="text-gold uppercase tracking-widest text-xs font-bold mb-8">Opening Hours</h4>
+            <div className="space-y-3">
+              {HOURS.slice(0, 7).map((item, idx) => (
+                <div key={idx} className="flex justify-between text-xs">
+                  <span className="text-cream/40">{item.day}</span>
+                  <span className="text-cream/60 tabular-nums">{item.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Map Integration */}
+          <div>
+            <h4 className="text-gold uppercase tracking-widest text-xs font-bold mb-8">Find Us</h4>
+            <div className="h-48 rounded-xl overflow-hidden border border-white/10 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.442654316634!2d-84.89679628464654!3d39.055979979546!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x88417937d2f9f1ab%3A0x7d6a7ed2a3a5f3e9!2s215%20Judiciary%20St%2C%20Aurora%2C%20IN%2047001%2C%20USA!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-cream/20 text-[10px] uppercase tracking-[0.2em] text-center md:text-left">
+            Holy Land Grill © 2026 • Aurora, Indiana • Premium Mediterranean Street Food
+          </div>
+          <div className="flex gap-8">
+            <a href="#" className="text-cream/20 text-[10px] uppercase tracking-[0.1em] hover:text-gold transition-colors">Privacy Policy</a>
+            <a href="#" className="text-cream/20 text-[10px] uppercase tracking-[0.1em] hover:text-gold transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

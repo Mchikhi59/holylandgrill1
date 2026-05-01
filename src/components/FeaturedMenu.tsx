@@ -42,7 +42,7 @@ const MENU_DATA: Category[] = [
         link: "https://www.toasttab.com/local/order/sicilia-pizza-pizza/item-slice-cheese_b63f1c6f-1bcf-4fa3-8c08-9cce410832b9"
       },
       { name: "Heritage Beef Shawarma", price: "11.99", description: "Flame-seared beef, sumac onions, tomatoes, tahini" },
-      { name: "Kebab Wrap", price: "11.99", description: "Grilled spiced beef, hummus, tomatoes, onions" },
+      { name: "Kebab Wrap", price: "11.99", description: "Grilled spiced beef, hummus, tomatoes, onions, tahini" },
       { name: "Shish Tawooq Wrap", price: "11.99", description: "Grilled spiced chicken, garlic sauce, cucumber pickles" },
       { name: "Gyro Wrap", price: "10.99", description: "Traditional gyro meat, tomatoes, tzatziki" },
     ],
@@ -80,6 +80,7 @@ const MENU_DATA: Category[] = [
       { name: "Greek Salad", price: "7.99", description: "Fresh garden vegetables with feta and olives" },
     ],
   },
+  
   {
     title: "Desserts & Drinks",
     items: [
@@ -95,13 +96,23 @@ const MENU_DATA: Category[] = [
       { name: "Bowl Combo", price: "18.99", description: "Any bowl + drink", featured: true },
     ],
   },
+  {
+    title: "Sauces",
+    items: [
+      { name: "Garlic Sauce", price: "1", description: "Our signature toum garlic whip" },
+      { name: "Spicy Garlic Sauce", price: "1", description: "Toum with a spicy kick", spicy: true },
+      { name: "Tahini Sauce", price: "1", description: "Creamy roasted sesame dip" },
+      { name: "Spicy Tahini Sauce", price: "1", description: "Tahini infused with house spices", spicy: true },
+      { name: "Tzatziki", price: "1", description: "Traditional yogurt and cucumber dip", vegetarian: true },
+    ],
+  },
 ];
 
 export default function FeaturedMenu() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section id="menu" className="py-24 bg-charcoal">
+    <section id="menu" className="py-24 bg-transparent">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <motion.span 

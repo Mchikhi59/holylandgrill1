@@ -4,7 +4,7 @@ import { EMAIL } from "../constants";
 
 export default function Catering() {
   return (
-    <section id="catering" className="py-32 relative overflow-hidden bg-black/40 border-y border-white/5">
+    <section id="catering" className="py-32 relative overflow-hidden bg-black/20 border-y border-white/5">
       {/* Background with texture instead of image */}
       <div className="absolute inset-0 z-0 opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-gold)_0%,_transparent_70%)] opacity-20" />

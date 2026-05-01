@@ -17,7 +17,7 @@ const TikTok = ({ className }: { className?: string }) => (
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-charcoal border-t border-white/5">
+    <section id="contact" className="py-24 bg-transparent border-t border-white/5">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
