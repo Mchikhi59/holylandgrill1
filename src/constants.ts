@@ -1,6 +1,6 @@
 export const TOAST_ORDER_LINK = "https://www.toasttab.com/local/order/sicilia-pizza-pizza";
 export const PHONE_NUMBER = "859-888-4703";
-export const EMAIL = "miloud@holylandgrill.com";
+export const EMAIL = "contactus@theholylandgrill.com";
 export const ADDRESS = "215 Judiciary St, Aurora, Indiana, 47001";
 export const HOURS = [
   { day: "Monday", time: "11:00 AM - 10:30 PM" },
