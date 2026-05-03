@@ -7,6 +7,7 @@ interface MenuItem {
   name: string;
   description: string;
   price: string;
+  image?: string;
   featured?: boolean;
   vegetarian?: boolean;
   spicy?: boolean;
@@ -27,6 +28,7 @@ const MENU_DATA: Category[] = [
         name: "The \"Bag-O-Grub\" Special",
         price: "10.99",
         description: "Create your own flavor adventure! Grab a bag of chips, and we will load it with your choice of savory meat, crisp fresh vegetables, and your favorite house sauce.",
+        image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777821233/Grab_a_bag_of_chips_g86njz.jpg",
         featured: true,
         warning: "⚠️ IN-PERSON EXCLUSIVE: Available at the truck only. Not eligible for online ordering or delivery."
       }
@@ -39,12 +41,13 @@ const MENU_DATA: Category[] = [
         name: "Classic Chicken Shawarma", 
         price: "11.99", 
         description: "Marinated chicken, pickles,toum garlic whip ",
+        image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777818464/chicken_shawarma_wrap_mzk2bw.jpg",
         link: "https://www.toasttab.com/local/order/sicilia-pizza-pizza/item-slice-cheese_b63f1c6f-1bcf-4fa3-8c08-9cce410832b9"
       },
-      { name: "Heritage Beef Shawarma", price: "11.99", description: "Flame-seared beef, sumac onions, tomatoes, tahini" },
-      { name: "Kebab Wrap", price: "11.99", description: "Grilled spiced beef, hummus, tomatoes, onions, tahini" },
-      { name: "Shish Tawooq Wrap", price: "11.99", description: "Grilled spiced chicken, garlic sauce, cucumber pickles" },
-      { name: "Gyro Wrap", price: "9.99", description: "Traditional gyro meat, tomatoes, tzatziki" },
+      { name: "Heritage Beef Shawarma", price: "11.99", description: "Flame-seared beef, sumac onions, tomatoes, tahini", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777817015/1000066006_ockwbj.jpg" },
+      { name: "Kebab Wrap", price: "11.99", description: "Grilled spiced beef, hummus, tomatoes, onions, tahini", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819921/wrap_Grilled_spiced_beef_hikg75.jpg" },
+      { name: "Shish Tawooq Wrap", price: "11.99", description: "Grilled spiced chicken, garlic sauce, cucumber pickles", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819611/Shish_Tawooq_Wrap_rhlan4.jpg" },
+      { name: "Gyro Wrap", price: "9.99", description: "Traditional gyro meat, tomatoes, tzatziki", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777820844/Gyro_wrap_wm153g.jpg" },
     ],
   },
   {
@@ -60,22 +63,22 @@ const MENU_DATA: Category[] = [
   {
     title: "Loaded Fries",
     items: [
-      { name: "The Street King Loaded Fries", price: "14.99", description: "Seasoned fries, shawarma meat, feta, zebra sauce", featured: true, spicy: true },
+      { name: "The Street King Loaded Fries", price: "14.99", description: "Seasoned fries, shawarma meat, feta, zebra sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777821876/Seasoned_fries_hod5il.jpg", featured: true, spicy: true },
     ],
   },
   {
     title: "Appetizers",
     items: [
-      { name: "Silky Hummus", price: "6.99", description: "Creamy hummus dip", vegetarian: true },
-      { name: "Baba Ganoush", price: "6.99", description: "Smoky eggplant dip", vegetarian: true },
-      { name: "Crispy Kibbeh", price: "4.99", description: "Crispy fried seasoned bulgur shells filled with seaoned beef meat and onion" },
-      { name: "Hand-Made Falafel", price: "6.99", description: "6 pieces Fresh falafel ", vegetarian: true },
+      { name: "Silky Hummus", price: "6.99", description: "Creamy hummus dip", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777822317/Creamy_hummus_dip_adqlk4.jpg", vegetarian: true },
+      { name: "Baba Ganoush", price: "6.99", description: "Smoky eggplant dip", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777822283/Baba_Ganoush_btcfq6.jpg", vegetarian: true },
+      { name: "Crispy Kibbeh", price: "4.99", description: "Crispy fried seasoned bulgur shells filled with seaoned beef meat and onion", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777822413/Crispy_Kibbeh_d4ggnx.jpg" },
+      { name: "Hand-Made Falafel", price: "6.99", description: "6 pieces Fresh falafel ", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777822496/Hand-Made_Falafel_bck6xh.jpg", vegetarian: true },
     ],
   },
   {
     title: "Sides & Soup",
     items: [
-      { name: "Mediterranean Lentil Soup", price: "4.99", description: "Served with fresh lemon", vegetarian: true },
+      { name: "Mediterranean Lentil Soup", price: "4.99", description: "Served with fresh lemon", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777822617/Mediterranean_Lentil_Soup_pchhnt.jpg", vegetarian: true },
       { name: "Seasoned Fries", price: "4.99", description: "Golden crispy fries with mediterranean herbs" },
       { name: "Rice", price: "3.99", description: "Authentic basmati rice" },
       { name: "Mediterranean Salad", price: "4.99", description: "Fresh garden vegetables with feta and olives" },
@@ -171,41 +174,56 @@ export default function FeaturedMenu() {
               {MENU_DATA[activeTab].items.map((item) => (
                 <div 
                   key={item.name} 
-                  className={`group relative p-8 border border-white/5 hover:border-gold/30 transition-all duration-500 bg-black/20 ${
+                  className={`group relative border border-white/5 hover:border-gold/30 transition-all duration-500 bg-black/20 overflow-hidden ${
                     item.featured ? "bg-white/[0.03]" : ""
                   }`}
                 >
                   {item.featured && (
-                    <div className="absolute -top-3 left-8 bg-gold text-charcoal px-3 py-1 text-[10px] uppercase font-black tracking-widest flex items-center gap-1">
+                    <div className="absolute top-4 left-4 z-10 bg-gold text-charcoal px-3 py-1 text-[10px] uppercase font-black tracking-widest flex items-center gap-1 shadow-xl">
                       <Star className="w-3 h-3 fill-current" />
                       {item.name.includes("Bag-O-Grub") ? "Specials" : "Popular"}
                     </div>
                   )}
                   
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h4 className="font-serif text-2xl text-cream group-hover:text-gold transition-colors duration-300">
-                          {item.name}
-                        </h4>
-                        {item.vegetarian && <Leaf className="w-4 h-4 text-green-500" title="Vegetarian" />}
-                        {item.spicy && <Flame className="w-4 h-4 text-orange-500" title="Spicy" />}
+                  <div className="flex flex-col sm:flex-row h-full">
+                    {item.image && (
+                      <div className="w-full sm:w-48 h-56 sm:h-auto overflow-hidden bg-black/40 border-b sm:border-b-0 sm:border-r border-white/5 flex items-center justify-center">
+                        <img 
+                          src={item.image} 
+                          alt={item.name}
+                          className="w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+                          referrerPolicy="no-referrer"
+                        />
                       </div>
-                      <p className="text-cream/50 font-light text-sm italic leading-relaxed max-w-sm">
-                        {item.description}
-                      </p>
-                      {item.warning && (
-                        <p className="mt-3 text-[#ff4d4d] text-[10px] font-black uppercase tracking-wider bg-red-500/10 p-2 rounded border border-red-500/20">
-                          {item.warning}
-                        </p>
-                      )}
-                    </div>
-                    <div className="text-xl font-serif text-gold font-light tracking-wide">
-                      ${item.price}
+                    )}
+                    
+                    <div className="flex-1 p-8">
+                      <div className="flex justify-between items-start mb-4 gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2 flex-wrap">
+                            <h4 className="font-serif text-2xl text-cream group-hover:text-gold transition-colors duration-300">
+                              {item.name}
+                            </h4>
+                            <div className="flex items-center gap-2">
+                              {item.vegetarian && <Leaf className="w-4 h-4 text-green-500" title="Vegetarian" />}
+                              {item.spicy && <Flame className="w-4 h-4 text-orange-500" title="Spicy" />}
+                            </div>
+                          </div>
+                          <p className="text-cream/50 font-light text-sm italic leading-relaxed max-w-sm">
+                            {item.description}
+                          </p>
+                          {item.warning && (
+                            <p className="mt-4 text-[#ff4d4d] text-[10px] font-black uppercase tracking-wider bg-red-500/10 p-2 rounded border border-red-500/20">
+                              {item.warning}
+                            </p>
+                          )}
+                        </div>
+                        <div className="text-xl font-serif text-gold font-light tracking-wide whitespace-nowrap">
+                          ${item.price}
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  
                 </div>
               ))}
             </motion.div>
