@@ -38,22 +38,23 @@ const MENU_DATA: Category[] = [
       { 
         name: "Classic Chicken Shawarma", 
         price: "11.99", 
-        description: "Marinated chicken, pickles, toum garlic whip",
+        description: "Marinated chicken, pickles,toum garlic whip ",
         link: "https://www.toasttab.com/local/order/sicilia-pizza-pizza/item-slice-cheese_b63f1c6f-1bcf-4fa3-8c08-9cce410832b9"
       },
       { name: "Heritage Beef Shawarma", price: "11.99", description: "Flame-seared beef, sumac onions, tomatoes, tahini" },
       { name: "Kebab Wrap", price: "11.99", description: "Grilled spiced beef, hummus, tomatoes, onions, tahini" },
       { name: "Shish Tawooq Wrap", price: "11.99", description: "Grilled spiced chicken, garlic sauce, cucumber pickles" },
-      { name: "Gyro Wrap", price: "10.99", description: "Traditional gyro meat, tomatoes, tzatziki" },
+      { name: "Gyro Wrap", price: "9.99", description: "Traditional gyro meat, tomatoes, tzatziki" },
     ],
   },
   {
     title: "Bowls & Plates",
     items: [
-      { name: "The Sultan's Chicken Bowl", price: "13.99", description: "Chicken shawarma, hummus, extra garlic sauce", featured: true },
-      { name: "Imperial Beef Bowl", price: "13.99", description: "Beef shawarma, tomatoes, onions, tahini" },
-      { name: "Shish Tawooq Rice Platter", price: "13.99", description: "Two skewers lemon yogurt grilled chicken" },
-      { name: "The Mixed Grill Bowl", price: "14.99", description: "Shish Tawooq skewer and Kebab skewer" },
+      { name: "The Sultan's Chicken Bowl", price: "13.99", description: "Your choice of rice or salad topped with signature shaved chicken shawarma,Served with diced tomatoes with topped with garlic sauce", featured: true },
+      { name: "Imperial Beef Bowl", price: "13.99", description: "Your choice of rice or salad with savory Beef shawarma, Served with diced tamotoes,onins and topped with tahini sauce " },
+      { name: "Shish Tawooq Rice Platter", price: "13.99", description: "rice or salad topped with Two skewers lemon yogurt grilled chicken with garlic sauce" },
+      { name: "The Mixed Grill Bowl", price: "13.99", description: "one Shish Tawooq skewer and one Kebab skewer with rice and your choice of sauce" },
+      { name: "Mediterranean Chicken Salad Bowl", price: "12.99", description: "Fresh garden vegetables with feta and olives topped savory shaved chicken shwarma " },
     ],
   },
   {
@@ -68,7 +69,7 @@ const MENU_DATA: Category[] = [
       { name: "Silky Hummus", price: "6.99", description: "Creamy hummus dip", vegetarian: true },
       { name: "Baba Ganoush", price: "6.99", description: "Smoky eggplant dip", vegetarian: true },
       { name: "Crispy Kibbeh", price: "7.99", description: "Crispy seasoned bulgur shells" },
-      { name: "Hand-Made Falafel", price: "6.99", description: "Fresh falafel pieces", vegetarian: true },
+      { name: "Hand-Made Falafel", price: "6.99", description: "6 pieces Fresh falafel ", vegetarian: true },
     ],
   },
   {
@@ -77,7 +78,8 @@ const MENU_DATA: Category[] = [
       { name: "Mediterranean Lentil Soup", price: "5.99", description: "Served with fresh lemon", vegetarian: true },
       { name: "Seasoned Fries", price: "4.99", description: "Golden crispy fries with mediterranean herbs" },
       { name: "Rice", price: "3.99", description: "Authentic basmati rice" },
-      { name: "Greek Salad", price: "7.99", description: "Fresh garden vegetables with feta and olives" },
+      { name: "Mediterranean Salad", price: "4.99", description: "Fresh garden vegetables with feta and olives" },
+      
     ],
   },
   
@@ -93,7 +95,7 @@ const MENU_DATA: Category[] = [
     title: "Combos",
     items: [
       { name: "Wrap Combo", price: "15.99", description: "Any wrap + fries + drink", featured: true },
-      { name: "Bowl Combo", price: "18.99", description: "Any bowl + drink", featured: true },
+      
     ],
   },
   {
