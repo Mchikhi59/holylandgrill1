@@ -32,8 +32,8 @@ export default function About() {
                 From our signature plates to our freshly prepared wraps, every dish is a tribute to the vibrant culinary traditions of the Mediterranean. We believe that great food starts with the best ingredients and a dedication to authentic methods.
               </p>
               <div className="flex flex-col gap-2">
-                <span className="font-serif text-gold text-2xl italic font-light tracking-wider">Rick</span>
-                <span className="text-cream/40 uppercase tracking-[0.2em] text-[10px]">Founder</span>
+                <span className="font-serif text-gold text-2xl italic font-light tracking-wider">Rick & Chikhi</span>
+                <span className="text-cream/40 uppercase tracking-[0.2em] text-[10px]">Founders</span>
               </div>
             </div>
           </div>
