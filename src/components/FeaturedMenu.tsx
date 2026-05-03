@@ -68,14 +68,14 @@ const MENU_DATA: Category[] = [
     items: [
       { name: "Silky Hummus", price: "6.99", description: "Creamy hummus dip", vegetarian: true },
       { name: "Baba Ganoush", price: "6.99", description: "Smoky eggplant dip", vegetarian: true },
-      { name: "Crispy Kibbeh", price: "7.99", description: "Crispy seasoned bulgur shells" },
+      { name: "Crispy Kibbeh", price: "4.99", description: "Crispy fried seasoned bulgur shells filled with seaoned beef meat and onion" },
       { name: "Hand-Made Falafel", price: "6.99", description: "6 pieces Fresh falafel ", vegetarian: true },
     ],
   },
   {
     title: "Sides & Soup",
     items: [
-      { name: "Mediterranean Lentil Soup", price: "5.99", description: "Served with fresh lemon", vegetarian: true },
+      { name: "Mediterranean Lentil Soup", price: "4.99", description: "Served with fresh lemon", vegetarian: true },
       { name: "Seasoned Fries", price: "4.99", description: "Golden crispy fries with mediterranean herbs" },
       { name: "Rice", price: "3.99", description: "Authentic basmati rice" },
       { name: "Mediterranean Salad", price: "4.99", description: "Fresh garden vegetables with feta and olives" },
@@ -87,8 +87,8 @@ const MENU_DATA: Category[] = [
     title: "Desserts & Drinks",
     items: [
       { name: "Famous Baklava", price: "4.99", description: "Phyllo, pistachios, honey syrup", featured: true },
-      { name: "Refreshments", price: "2.49", description: "Soft drink or bottled water" },
-      { name: "Fresh Lemonade", price: "4.99", description: "House-made recipe" },
+      { name: "Refreshments", price: "2.49", description: "Cola , Sprite, Pepsi or bottled water" },
+      
     ],
   },
   {
