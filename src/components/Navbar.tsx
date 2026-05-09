@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ShoppingBag } from "lucide-react";
+import { Menu, X, ShoppingBag, User } from "lucide-react";
 import { TOAST_ORDER_LINK, LOGO_URL } from "../constants";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user } = useAuth();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,12 +20,19 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Menu", href: "#menu" },
-    { name: "About", href: "#about" },
-    { name: "Catering", href: "#catering" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#home" },
+    { name: "Menu", href: "/#menu" },
+    { name: "About", href: "/#about" },
+    { name: "Catering", href: "/#catering" },
+    { name: "Contact", href: "/#contact" },
   ];
+
+  const isActive = (href: string) => {
+    if (href.startsWith("/#") && location.pathname === "/") {
+      return location.hash === href.substring(1);
+    }
+    return location.pathname === href;
+  };
 
   return (
     <nav 
@@ -31,7 +42,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="group flex items-center h-12 md:h-16">
+        <Link to="/" className="group flex items-center h-12 md:h-16">
           <div className="relative h-full">
             <img 
               src={LOGO_URL} 
@@ -48,7 +59,7 @@ export default function Navbar() {
               HOLY LAND <span className="italic font-light">GRILL</span>
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Links - Right Aligned */}
         <div className="hidden lg:flex items-center gap-10">
@@ -57,11 +68,33 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[10px] uppercase tracking-[0.3em] font-bold text-cream/70 hover:text-gold transition-colors duration-300"
+                className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 ${
+                  isActive(link.href) ? "text-gold" : "text-cream/70 hover:text-gold"
+                }`}
               >
                 {link.name}
               </a>
             ))}
+            {user ? (
+              <Link
+                to="/profile"
+                className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 flex items-center gap-2 ${
+                  location.pathname === "/profile" ? "text-gold" : "text-cream/70 hover:text-gold"
+                }`}
+              >
+                <User className="w-3 h-3" />
+                Profile
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 ${
+                  location.pathname === "/login" ? "text-gold" : "text-cream/70 hover:text-gold"
+                }`}
+              >
+                Login
+              </Link>
+            )}
           </div>
           <a
             href={TOAST_ORDER_LINK}
@@ -102,7 +135,7 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 overflow-y-auto pb-12">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -113,6 +146,24 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
+              {user ? (
+                <Link
+                  to="/profile"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-4xl font-serif text-cream hover:text-gold transition-colors italic flex items-center gap-4"
+                >
+                  <User className="w-8 h-8" />
+                  Profile
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-4xl font-serif text-cream hover:text-gold transition-colors italic"
+                >
+                  Login
+                </Link>
+              )}
               <a
                 href={TOAST_ORDER_LINK}
                 target="_blank"
