@@ -7,14 +7,14 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 500], [0, 200]);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section id="home" className="relative min-h-screen w-full flex items-center justify-center py-20 px-6 overflow-hidden scroll-mt-32">
       {/* Background with subtle gradient instead of image */}
       <div className="absolute inset-0 z-0 bg-transparent">
         <div className="absolute inset-0 bg-radial-gradient from-gold/5 to-transparent opacity-50" />
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center px-6 max-w-4xl">
+      <div className="relative z-20 text-center max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

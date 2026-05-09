@@ -117,7 +117,7 @@ export default function FeaturedMenu() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section id="menu" className="py-24 bg-transparent">
+    <section id="menu" className="py-24 bg-transparent scroll-mt-32">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <motion.span 

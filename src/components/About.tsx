@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 export default function About() {
   return (
-    <section id="about" className="py-32 relative overflow-hidden bg-transparent">
+    <section id="about" className="py-32 relative overflow-hidden bg-transparent scroll-mt-32">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-olive/5 -skew-x-12 transform translate-x-1/2" />
       
