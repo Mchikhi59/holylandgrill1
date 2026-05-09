@@ -12,6 +12,7 @@ import Catering from "./components/Catering";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingOrderButton from "./components/FloatingOrderButton";
+import ScrollToTop from "./components/ScrollToTop";
 import PromoBanner from "./components/PromoBanner";
 import OrderCallToAction from "./components/OrderCallToAction";
 import { motion, useScroll, useSpring } from "motion/react";
@@ -59,6 +60,7 @@ export default function App() {
 
       <Footer />
       <FloatingOrderButton />
+      <ScrollToTop />
     </div>
   );
 }
