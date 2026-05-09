@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
-import { Mail } from "lucide-react";
-import { EMAIL } from "../constants";
+import { ClipboardList } from "lucide-react";
 
 export default function Catering() {
   return (
@@ -27,10 +26,12 @@ export default function Catering() {
           </p>
           
           <a 
-            href={`mailto:${EMAIL}?subject=Catering Request`}
+            href="https://form.jotform.com/261277570109054"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-12 py-5 bg-gold text-charcoal font-bold uppercase tracking-widest text-sm hover:bg-cream transition-all duration-300 shadow-2xl shadow-gold/20"
           >
-            <Mail className="w-5 h-5" />
+            <ClipboardList className="w-5 h-5" />
             Request Catering
           </a>
         </motion.div>
