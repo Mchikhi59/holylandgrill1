@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ShoppingBag, User } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { TOAST_ORDER_LINK, LOGO_URL } from "../constants";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user } = useAuth();
   const location = useLocation();
 
   useEffect(() => {
@@ -75,26 +73,6 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            {user ? (
-              <Link
-                to="/profile"
-                className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 flex items-center gap-2 ${
-                  location.pathname === "/profile" ? "text-gold" : "text-cream/70 hover:text-gold"
-                }`}
-              >
-                <User className="w-3 h-3" />
-                Profile
-              </Link>
-            ) : (
-              <Link
-                to="/login"
-                className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 ${
-                  location.pathname === "/login" ? "text-gold" : "text-cream/70 hover:text-gold"
-                }`}
-              >
-                Login
-              </Link>
-            )}
           </div>
           <a
             href={TOAST_ORDER_LINK}
@@ -146,24 +124,6 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              {user ? (
-                <Link
-                  to="/profile"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl md:text-4xl font-serif text-cream hover:text-gold transition-colors italic flex items-center gap-4"
-                >
-                  <User className="w-6 h-6 md:w-8 md:h-8" />
-                  Profile
-                </Link>
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl md:text-4xl font-serif text-cream hover:text-gold transition-colors italic"
-                >
-                  Login
-                </Link>
-              )}
               <a
                 href={TOAST_ORDER_LINK}
                 target="_blank"
