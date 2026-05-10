@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { auth, db, handleFirestoreError, OperationType } from "../../lib/firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
 import { UserPlus, Mail, Lock, User } from "lucide-react";
@@ -23,6 +23,9 @@ export default function Register() {
       
       // Update profile with name
       await updateProfile(user, { displayName: name });
+
+      // Send email verification
+      await sendEmailVerification(user);
       
       // Create user doc in Firestore
       const userPath = `users/${user.uid}`;

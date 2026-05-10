@@ -124,7 +124,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[60] bg-charcoal flex flex-col p-8"
+            className="fixed inset-0 z-[60] bg-[#8a8f2a] flex flex-col p-8"
           >
             <div className="flex justify-between items-center mb-16">
               <span className="font-serif text-2xl tracking-tighter text-cream">
@@ -135,13 +135,13 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="flex flex-col gap-8 overflow-y-auto pb-12">
+            <div className="flex-1 flex flex-col justify-center gap-6 pb-12 bg-[#8a8f2a]">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-4xl font-serif text-cream hover:text-gold transition-colors italic"
+                  className="text-3xl md:text-4xl font-serif text-cream hover:text-gold transition-colors italic"
                 >
                   {link.name}
                 </a>
@@ -150,16 +150,16 @@ export default function Navbar() {
                 <Link
                   to="/profile"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-4xl font-serif text-cream hover:text-gold transition-colors italic flex items-center gap-4"
+                  className="text-3xl md:text-4xl font-serif text-cream hover:text-gold transition-colors italic flex items-center gap-4"
                 >
-                  <User className="w-8 h-8" />
+                  <User className="w-6 h-6 md:w-8 md:h-8" />
                   Profile
                 </Link>
               ) : (
                 <Link
                   to="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-4xl font-serif text-cream hover:text-gold transition-colors italic"
+                  className="text-3xl md:text-4xl font-serif text-cream hover:text-gold transition-colors italic"
                 >
                   Login
                 </Link>
@@ -168,7 +168,7 @@ export default function Navbar() {
                 href={TOAST_ORDER_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 px-8 py-5 bg-gold text-charcoal text-center text-sm uppercase tracking-[0.2em] font-bold"
+                className="mt-4 px-8 py-4 bg-gold text-charcoal text-center text-xs uppercase tracking-[0.2em] font-bold"
               >
                 Order Online
               </a>
