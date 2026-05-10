@@ -29,9 +29,8 @@ interface FirestoreErrorInfo {
 }
 
 export function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
-  const errorMessage = error instanceof Error ? error.message : String(error);
   const errInfo: FirestoreErrorInfo = {
-    error: errorMessage,
+    error: error instanceof Error ? error.message : String(error),
     authInfo: {
       userId: auth.currentUser?.uid,
       email: auth.currentUser?.email,
@@ -42,18 +41,7 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
     path
   };
   console.error('Firestore Error: ', JSON.stringify(errInfo));
-
-  // Return a more user-friendly error message
-  let friendlyMessage = 'An unexpected database error occurred.';
-  if (errorMessage.includes('permission-denied')) {
-    friendlyMessage = 'You do not have permission to perform this action.';
-  } else if (errorMessage.includes('unavailable')) {
-    friendlyMessage = 'The database is currently unavailable. Please try again later.';
-  } else if (errorMessage.includes('not-found')) {
-    friendlyMessage = 'The requested information could not be found.';
-  }
-
-  throw new Error(friendlyMessage);
+  throw new Error(JSON.stringify(errInfo));
 }
 
 async function testConnection() {

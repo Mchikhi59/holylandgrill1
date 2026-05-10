@@ -20,16 +20,16 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/", hash: "home" },
-    { name: "Menu", href: "/", hash: "menu" },
-    { name: "About", href: "/", hash: "about" },
-    { name: "Catering", href: "/", hash: "catering" },
-    { name: "Contact", href: "/", hash: "contact" },
+    { name: "Home", href: "/#home" },
+    { name: "Menu", href: "/#menu" },
+    { name: "About", href: "/#about" },
+    { name: "Catering", href: "/#catering" },
+    { name: "Contact", href: "/#contact" },
   ];
 
-  const isActive = (href: string, hash?: string) => {
-    if (hash && location.pathname === href) {
-      return location.hash === `#${hash}`;
+  const isActive = (href: string) => {
+    if (href.startsWith("/#") && location.pathname === "/") {
+      return location.hash === href.substring(1);
     }
     return location.pathname === href;
   };
@@ -65,15 +65,15 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-10">
           <div className="flex items-center gap-10">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                to={link.hash ? `${link.href}#${link.hash}` : link.href}
+                href={link.href}
                 className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 ${
-                  isActive(link.href, link.hash) ? "text-gold" : "text-cream/70 hover:text-gold"
+                  isActive(link.href) ? "text-gold" : "text-cream/70 hover:text-gold"
                 }`}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
             {user ? (
               <Link
@@ -137,14 +137,14 @@ export default function Navbar() {
 
             <div className="flex-1 flex flex-col justify-center gap-6 pb-12 bg-[#8a8f2a]">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
-                  to={link.hash ? `${link.href}#${link.hash}` : link.href}
+                  href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-3xl md:text-4xl font-serif text-cream hover:text-gold transition-colors italic"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
               {user ? (
                 <Link

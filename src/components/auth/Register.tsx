@@ -27,9 +27,18 @@ export default function Register() {
       // Send email verification
       await sendEmailVerification(user);
       
-      // We don't create the Firestore doc here anymore.
-      // It's handled by the AuthProvider in src/hooks/useAuth.tsx
-      // to ensure consistency and handle all sign-up methods (Email/Google).
+      // Create user doc in Firestore
+      const userPath = `users/${user.uid}`;
+      try {
+        await setDoc(doc(db, "users", user.uid), {
+          uid: user.uid,
+          email: user.email,
+          displayName: name,
+          createdAt: new Date().toISOString(),
+        });
+      } catch (err) {
+        handleFirestoreError(err, OperationType.WRITE, userPath);
+      }
 
       navigate("/profile");
     } catch (err: any) {
