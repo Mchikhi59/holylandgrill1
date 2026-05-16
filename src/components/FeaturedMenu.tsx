@@ -40,14 +40,14 @@ const MENU_DATA: Category[] = [
       { 
         name: "Classic Chicken Shawarma", 
         price: "11.99", 
-        description: "Marinated chicken, pickles,toum garlic whip ",
+        description: "Thinly sliced, tender chicken marinated in a rich blend of Middle Eastern spices, garlic, and lemon juice, then slow roasted to savory perfection. Served with crisp pickles and our signature garlic sauce, wrapped in warm flatbread ",
         image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777818464/chicken_shawarma_wrap_mzk2bw.jpg",
         link: "https://www.toasttab.com/local/order/sicilia-pizza-pizza/item-slice-cheese_b63f1c6f-1bcf-4fa3-8c08-9cce410832b9"
       },
-      { name: "Heritage Beef Shawarma", price: "11.99", description: "Flame-seared beef, sumac onions, tomatoes, tahini", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777817015/1000066006_ockwbj.jpg" },
-      { name: "Kebab Wrap", price: "11.99", description: "Grilled spiced beef, hummus, tomatoes, onions, tahini", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819921/wrap_Grilled_spiced_beef_hikg75.jpg" },
-      { name: "Shish Tawooq Wrap", price: "11.99", description: "Grilled spiced chicken, garlic sauce, cucumber pickles", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819611/Shish_Tawooq_Wrap_rhlan4.jpg" },
-      { name: "Gyro Wrap", price: "9.99", description: "Traditional gyro meat, tomatoes, tzatziki", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777820844/Gyro_wrap_wm153g.jpg" },
+      { name: "Heritage Beef Shawarma", price: "11.99", description: "Premium cuts of tender beef deeply marinated in a traditional blend of aromatic Middle Eastern spices, garlic, and a touch of vinegar, then slow roasted to perfection Wrapped in warm flatbread. Served with freshly tomatoes, and a drizzle of rich, authentic tahini sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777817015/1000066006_ockwbj.jpg" },
+      { name: "Kebab Wrap", price: "11.99", description: "Perfectly seasoned, flame-grilled ground meat skewers packed with fresh herbs and traditional spices. Wrapped in warm flatbread with crisp lettuce, juicy tomatoes, onions, and a drizzle of cool, creamy sauce.", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819921/wrap_Grilled_spiced_beef_hikg75.jpg" },
+      { name: "Shish Tawooq Wrap", price: "11.99", description: "Tender, juicy cubes of chicken breast marinated in our signature yogurt, lemon, and garlic spice blend, grilled to perfection. Wrapped in warm flatbread with pickles, and a generous slather of our authentic, creamy garlic sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819611/Shish_Tawooq_Wrap_rhlan4.jpg" },
+      { name: "Gyro Wrap", price: "9.99", description: "Flame-roasted, thinly sliced seasoned beef and lamb piled high on warm, Wrapped in warm flatbread. Layered with crisp lettuce, tomatoes, and a generous drizzle of our cool, creamy house-made Tzatziki sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777820844/Gyro_wrap_wm153g.jpg" },
     ],
   },
   {
