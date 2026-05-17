@@ -27,13 +27,13 @@ body {
 }
 
 .glass {
-  background: rgba(10, 10, 10, 0.8);
+  background: rgba(50, 185, 16, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #D4AF37 0%, #F5D372 50%, #B8860B 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #F5D372 50%, #16a129 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -48,7 +48,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #16db0c;
 }
 
 ::-webkit-scrollbar-thumb {

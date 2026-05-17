@@ -47,7 +47,7 @@ const MENU_DATA: Category[] = [
       { name: "Heritage Beef Shawarma", price: "11.99", description: "Premium cuts of tender beef deeply marinated in a traditional blend of aromatic Middle Eastern spices, garlic, and a touch of vinegar, then slow roasted to perfection Wrapped in warm flatbread. Served with freshly tomatoes, and a drizzle of rich, authentic tahini sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777817015/1000066006_ockwbj.jpg" },
       { name: "Kebab Wrap", price: "11.99", description: "Perfectly seasoned, flame-grilled ground meat skewers packed with fresh herbs and traditional spices. Wrapped in warm flatbread with crisp lettuce, juicy tomatoes, onions, and a drizzle of cool, creamy sauce.", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819921/wrap_Grilled_spiced_beef_hikg75.jpg" },
       { name: "Shish Tawooq Wrap", price: "11.99", description: "Tender, juicy cubes of chicken breast marinated in our signature yogurt, lemon, and garlic spice blend, grilled to perfection. Wrapped in warm flatbread with pickles, and a generous slather of our authentic, creamy garlic sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777819611/Shish_Tawooq_Wrap_rhlan4.jpg" },
-      { name: "Gyro Wrap", price: "9.99", description: "Flame-roasted, thinly sliced seasoned beef and lamb piled high on warm, Wrapped in warm flatbread. Layered with crisp lettuce, tomatoes, and a generous drizzle of our cool, creamy house-made Tzatziki sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777820844/Gyro_wrap_wm153g.jpg" },
+      { name: "Gyro Wrap", price: "11.99", description: "Flame-roasted, thinly sliced seasoned beef and lamb piled high on warm, Wrapped in warm flatbread. Layered with crisp lettuce, tomatoes, and a generous drizzle of our cool, creamy house-made Tzatziki sauce", image: "https://res.cloudinary.com/dkbp4licj/image/upload/v1777820844/Gyro_wrap_wm153g.jpg" },
     ],
   },
   {
@@ -57,7 +57,7 @@ const MENU_DATA: Category[] = [
       { name: "Imperial Beef Bowl", price: "13.99", description: "Your choice of rice or salad with savory Beef shawarma, Served with diced tamotoes,onins and topped with tahini sauce " },
       { name: "Shish Tawooq Rice Platter", price: "13.99", description: "rice or salad topped with Two skewers lemon yogurt grilled chicken with garlic sauce" },
       { name: "The Mixed Grill Bowl", price: "13.99", description: "one Shish Tawooq skewer and one Kebab skewer with rice and your choice of sauce" },
-      { name: "Mediterranean Chicken Salad Bowl", price: "12.99", description: "Fresh garden vegetables with feta and olives topped savory shaved chicken shwarma " },
+      { name: "Mediterranean Chicken Salad Bowl", price: "13.99", description: "Fresh garden vegetables with feta and olives topped savory shaved chicken shwarma " },
     ],
   },
   {
@@ -98,6 +98,7 @@ const MENU_DATA: Category[] = [
     title: "Combos",
     items: [
       { name: "Wrap Combo", price: "15.99", description: "Any wrap + fries + drink", featured: true },
+      { name: "Bowl Combo", price: "16.99", description: "Any Bowl + fries + drink", },
       
     ],
   },

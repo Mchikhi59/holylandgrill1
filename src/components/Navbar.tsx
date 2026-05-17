@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <nav 
       className={`relative w-full z-50 transition-all duration-500 ${
-        isScrolled ? "py-4 glass border-b border-white/10" : "py-8 bg-black/20 backdrop-blur-sm"
+        isScrolled ? "py-4 bg-charcoal/95 backdrop-blur-md border-b border-white/10 shadow-2xl" : "py-8 bg-black/20 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
