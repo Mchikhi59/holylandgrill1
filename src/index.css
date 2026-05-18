@@ -9,11 +9,13 @@
   --color-cream: #F5F5F0;
   --color-charcoal: #0A0A0A;
   --color-olive: #3D4430;
+  --color-sage: #8a8f2a;
 }
 
 :root {
   background-color: var(--color-charcoal);
   color: var(--color-cream);
+  --accent: var(--color-sage);
 }
 
 html {

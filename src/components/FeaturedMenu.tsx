@@ -120,45 +120,46 @@ export default function FeaturedMenu() {
   return (
     <section id="menu" className="py-24 bg-transparent scroll-mt-32">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block"
-          >
-            Experience the Flavors
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-5xl md:text-7xl text-cream mb-6"
-          >
-            <span className="italic font-light gold-gradient">Menu</span>
-          </motion.h2>
-          <div className="w-24 h-[1px] bg-gold mx-auto" />
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-20 border-b border-white/5 pb-8">
-          {MENU_DATA.map((cat, idx) => (
-            <button
-              key={cat.title}
-              onClick={() => setActiveTab(idx)}
-              className={`px-6 py-3 text-sm uppercase tracking-widest font-bold transition-all duration-300 relative ${
-                activeTab === idx ? "text-gold" : "text-cream/40 hover:text-cream"
-              }`}
+        <div className="text-left mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-white/5 pb-10">
+          <div>
+            <motion.span 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block"
             >
-              {cat.title}
-              {activeTab === idx && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold"
-                />
-              )}
-            </button>
-          ))}
+              Curated Mediterranean Selection
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-serif text-6xl md:text-8xl text-cream tracking-tighter leading-none"
+            >
+              The <span className="italic font-light gold-gradient">Grill</span> Menu.
+            </motion.h2>
+          </div>
+          
+          {/* Tab Navigation as a rail */}
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            {MENU_DATA.map((cat, idx) => (
+              <button
+                key={cat.title}
+                onClick={() => setActiveTab(idx)}
+                className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-300 relative pb-2 ${
+                  activeTab === idx ? "text-gold" : "text-cream/30 hover:text-white"
+                }`}
+              >
+                {cat.title}
+                {activeTab === idx && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute bottom-0 left-0 right-0 h-[1px] bg-gold"
+                  />
+                )}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Menu Grid */}
@@ -175,51 +176,49 @@ export default function FeaturedMenu() {
               {MENU_DATA[activeTab].items.map((item) => (
                 <div 
                   key={item.name} 
-                  className={`group relative border border-white/5 hover:border-gold/30 transition-all duration-500 bg-black/20 overflow-hidden ${
-                    item.featured ? "bg-white/[0.03]" : ""
-                  }`}
+                  className={`group relative overflow-hidden transition-all duration-700 ${
+                    item.featured ? "bg-sage/5 border-sage/20" : "bg-transparent border-white/5"
+                  } border-b pb-12`}
                 >
-                  {item.featured && (
-                    <div className="absolute top-4 left-4 z-10 bg-gold text-charcoal px-3 py-1 text-[10px] uppercase font-black tracking-widest flex items-center gap-1 shadow-xl">
-                      <Star className="w-3 h-3 fill-current" />
-                      {item.name.includes("Bag-O-Grub") ? "Specials" : "Popular"}
-                    </div>
-                  )}
-                  
-                  <div className="flex flex-col sm:flex-row h-full">
+                  <div className="flex flex-col md:flex-row gap-8">
                     {item.image && (
-                      <div className="w-full sm:w-48 h-56 sm:h-auto overflow-hidden bg-black/40 border-b sm:border-b-0 sm:border-r border-white/5 flex items-center justify-center">
+                      <div className="w-full md:w-40 aspect-square overflow-hidden rounded-2xl">
                         <img 
                           src={item.image} 
                           alt={item.name}
-                          className="w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-cover grayscale-[0.2] transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
                           referrerPolicy="no-referrer"
                         />
                       </div>
                     )}
                     
-                    <div className="flex-1 p-8">
-                      <div className="flex justify-between items-start mb-4 gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2 flex-wrap">
-                            <h4 className="font-serif text-2xl text-cream group-hover:text-gold transition-colors duration-300">
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <h4 className="font-serif text-3xl text-cream group-hover:text-gold transition-colors duration-500">
                               {item.name}
                             </h4>
                             <div className="flex items-center gap-2">
-                              {item.vegetarian && <Leaf className="w-4 h-4 text-green-500" title="Vegetarian" />}
-                              {item.spicy && <Flame className="w-4 h-4 text-orange-500" title="Spicy" />}
+                              {item.vegetarian && <Leaf className="w-3 h-3 text-sage" title="Vegetarian" />}
+                              {item.spicy && <Flame className="w-3 h-3 text-gold" title="Spicy" />}
                             </div>
                           </div>
-                          <p className="text-cream/50 font-light text-sm italic leading-relaxed max-w-sm">
+                          {item.featured && (
+                            <span className="text-[8px] uppercase tracking-[0.3em] text-gold font-bold mb-3 block">
+                              Chef's Selection
+                            </span>
+                          )}
+                          <p className="text-cream/40 font-light text-sm leading-relaxed max-w-lg mb-4">
                             {item.description}
                           </p>
                           {item.warning && (
-                            <p className="mt-4 text-[#ff4d4d] text-[10px] font-black uppercase tracking-wider bg-red-500/10 p-2 rounded border border-red-500/20">
+                            <p className="text-[#ff4d4d] text-[9px] font-bold uppercase tracking-widest bg-red-500/5 px-3 py-1 inline-block border border-red-500/10">
                               {item.warning}
                             </p>
                           )}
                         </div>
-                        <div className="text-xl font-serif text-gold font-light tracking-wide whitespace-nowrap">
+                        <div className="text-2xl font-serif text-gold/80 italic font-light">
                           ${item.price}
                         </div>
                       </div>

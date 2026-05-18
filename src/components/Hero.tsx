@@ -7,76 +7,82 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 500], [0, 200]);
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex items-center justify-center py-20 px-6 overflow-hidden scroll-mt-32">
-      {/* Background with subtle gradient instead of image */}
-      <div className="absolute inset-0 z-0 bg-transparent">
-        <div className="absolute inset-0 bg-radial-gradient from-gold/5 to-transparent opacity-50" />
+    <section id="home" className="relative h-[90vh] md:h-screen w-full flex items-center overflow-hidden">
+      {/* Background Image Container */}
+      <motion.div 
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute inset-0 z-0"
+      >
+        <img 
+          src="https://res.cloudinary.com/dkbp4licj/image/upload/v1779065525/front_dtiqfq.jpg" 
+          alt="Holy Land Grill Exterior"
+          className="w-full h-full object-cover grayscale-[0.1]"
+        />
+        {/* Overlays for depth and text legibility */}
+        <div className="absolute inset-0 bg-charcoal/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-80" />
+      </motion.div>
+
+      {/* Content Overlay */}
+      <div className="relative z-20 container mx-auto px-6 pt-20">
+        <div className="max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <span className="inline-block text-gold font-sans tracking-[0.5em] uppercase text-[10px] md:text-xs mb-8 font-black border-l-4 border-gold pl-6 py-1">
+              Est. 2024 • Authentic Flavor
+            </span>
+            
+            <h1 className="font-serif text-7xl md:text-9xl xl:text-[11rem] mb-10 tracking-tighter leading-[0.85] text-cream drop-shadow-2xl">
+              The <br />
+              <span className="italic font-light gold-gradient">Holy Land</span><br />
+              <span className="text-white">Grill.</span>
+            </h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="font-sans text-xl md:text-2xl text-cream/80 mb-12 max-w-2xl font-light tracking-wide leading-relaxed drop-shadow-md"
+            >
+              Experience the true taste of Mediterranean street food, where ancient recipes meet modern passion. Sizzling shawarmas, crispy falafels, and soulful spices.
+            </motion.p>
+            
+            <div className="flex flex-wrap gap-8">
+              <a 
+                href={TOAST_ORDER_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative px-14 py-6 bg-gold text-charcoal font-black uppercase tracking-[0.3em] text-[11px] overflow-hidden rounded-sm transition-all shadow-2xl hover:shadow-gold/20"
+              >
+                <span className="relative z-10">Order Now</span>
+                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              </a>
+              <a 
+                href="#menu"
+                className="px-14 py-6 border-2 border-white/20 backdrop-blur-md text-white font-black uppercase tracking-[0.3em] text-[11px] hover:border-gold hover:text-gold transition-all duration-300 rounded-sm"
+              >
+                Explore Menu
+              </a>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-20 text-center max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <span className="inline-block text-gold font-sans tracking-[0.3em] uppercase text-xs mb-6 font-bold">
-            Experience the Mediterranean
-          </span>
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl mb-8 tracking-tighter leading-[1.1] md:leading-[1.05] text-cream drop-shadow-2xl">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="block"
-            >
-              Authentic Flavor.
-            </motion.span>
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="italic font-light gold-gradient block"
-            >
-              Fresh Grill.
-            </motion.span>
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-cream block mt-4"
-            >
-              Holy Land Grill.
-            </motion.span>
-          </h1>
-          <p className="font-sans text-lg md:text-xl text-cream/70 mb-12 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
-            From sizzling shawarmas to handcrafted falafels—experience the true taste of Mediterranean street food, made fresh daily with premium ingredients and time-honored recipes.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href={TOAST_ORDER_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-10 py-5 bg-gold text-charcoal font-bold uppercase tracking-widest text-xs hover:bg-cream transition-all duration-300 flex items-center justify-center"
-            >
-              Order Now
-            </a>
-            <a 
-              href="#menu"
-              className="w-full sm:w-auto px-10 py-5 border border-cream/20 text-cream font-bold uppercase tracking-widest text-xs hover:bg-cream hover:text-charcoal transition-all duration-300 flex items-center justify-center"
-            >
-              View Menu
-            </a>
-            <a 
-              href="#contact"
-              className="w-full sm:w-auto px-10 py-5 border border-gold/40 text-gold font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-charcoal transition-all duration-300 flex items-center justify-center"
-            >
-              Visit Us
-            </a>
-          </div>
-        </motion.div>
-      </div>
+      {/* Floating Badge (Refined) */}
+      <motion.div 
+        initial={{ opacity: 0, rotate: -10 }}
+        animate={{ opacity: 1, rotate: 12 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-12 right-12 hidden xl:flex w-48 h-48 bg-sage rounded-full items-center justify-center p-8 text-center text-charcoal font-black uppercase tracking-tighter text-sm leading-tight shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-30"
+      >
+        Fresh Selection <br/> Hand-Crafted
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div 

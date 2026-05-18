@@ -34,51 +34,48 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`relative w-full z-50 transition-all duration-500 ${
-        isScrolled ? "py-4 bg-charcoal/95 backdrop-blur-md border-b border-white/10 shadow-2xl" : "py-8 bg-black/20 backdrop-blur-sm"
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        isScrolled ? "py-4 bg-charcoal/95 backdrop-blur-md border-b border-white/5" : "py-10 bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="group flex items-center h-12 md:h-16">
-          <div className="relative h-full">
+        <Link to="/" className="group flex items-center gap-4">
+          <div className="relative h-12 w-12 bg-sage rounded-sm flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
             <img 
               src={LOGO_URL} 
               alt="Holy Land Grill Logo" 
-              className="h-full w-auto object-contain brightness-110 contrast-125"
+              className="h-full w-full object-contain p-2 brightness-110"
               referrerPolicy="no-referrer"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement?.querySelector('.text-fallback')?.classList.remove('hidden');
-              }}
             />
-            {/* Fallback Text if Image Fails */}
-            <span className="text-fallback hidden font-serif text-xl md:text-2xl tracking-tighter text-cream group-hover:text-gold transition-colors duration-300">
-              HOLY LAND <span className="italic font-light">GRILL</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-serif text-2xl tracking-tighter text-cream group-hover:text-gold transition-colors duration-300 uppercase leading-none">
+              Holy Land Grill
             </span>
+            <span className="text-[8px] uppercase tracking-[0.4em] text-gold/60 font-bold mt-1">Mediterranean Soul</span>
           </div>
         </Link>
 
         {/* Desktop Links - Right Aligned */}
-        <div className="hidden lg:flex items-center gap-10">
-          <div className="flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 ${
-                  isActive(link.href) ? "text-gold" : "text-cream/70 hover:text-gold"
-                }`}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
+        <div className="hidden lg:flex items-center gap-12">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-300 relative group ${
+                isActive(link.href) ? "text-gold" : "text-cream/60 hover:text-gold"
+              }`}
+            >
+              {link.name}
+              <div className={`absolute -bottom-1 left-0 w-full h-[1px] bg-gold transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100 ${isActive(link.href) ? "scale-x-100" : ""}`} />
+            </a>
+          ))}
           <a
             href={TOAST_ORDER_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 border border-gold text-gold text-[10px] uppercase tracking-[0.2em] font-black hover:bg-gold hover:text-charcoal transition-all duration-300 flex items-center gap-3"
+            className="px-8 py-4 bg-sage/10 border border-sage/30 text-gold text-[10px] uppercase tracking-[0.2em] font-black hover:bg-sage hover:text-charcoal transition-all duration-500 flex items-center gap-3 rounded-sm"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             Order Online
@@ -105,21 +102,24 @@ export default function Navbar() {
             className="fixed inset-0 z-[60] bg-[#8a8f2a] flex flex-col p-8"
           >
             <div className="flex justify-between items-center mb-16">
-              <span className="font-serif text-2xl tracking-tighter text-cream">
-                HOLY LAND <span className="italic font-light text-gold">GRILL</span>
-              </span>
-              <button onClick={() => setMobileMenuOpen(false)} className="text-cream p-2">
-                <X className="w-8 h-8" />
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl tracking-tighter text-charcoal uppercase leading-none">
+                  Holy Land Grill
+                </span>
+                <span className="text-[8px] uppercase tracking-[0.4em] text-charcoal/60 font-bold mt-1">Mediterranean Soul</span>
+              </div>
+              <button onClick={() => setMobileMenuOpen(false)} className="text-charcoal p-2 border border-charcoal/20 rounded-full">
+                <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-center gap-6 pb-12 bg-[#8a8f2a]">
+            <div className="flex-1 flex flex-col justify-center gap-8 pb-12">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl md:text-4xl font-serif text-cream hover:text-gold transition-colors italic"
+                  className="text-4xl md:text-6xl font-serif text-charcoal hover:text-white transition-colors italic leading-none"
                 >
                   {link.name}
                 </a>
@@ -128,9 +128,9 @@ export default function Navbar() {
                 href={TOAST_ORDER_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 px-8 py-4 bg-gold text-charcoal text-center text-xs uppercase tracking-[0.2em] font-bold"
+                className="mt-8 px-12 py-6 bg-charcoal text-white text-center text-xs uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-charcoal transition-all duration-300"
               >
-                Order Online
+                Order Now
               </a>
             </div>
           </motion.div>
