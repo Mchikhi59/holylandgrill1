@@ -10,6 +10,14 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -95,43 +103,59 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[60] bg-[#8a8f2a] flex flex-col p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] bg-charcoal flex flex-col"
           >
-            <div className="flex justify-between items-center mb-16">
+            {/* Mobile Menu Header */}
+            <div className="flex justify-between items-center p-8 border-b border-white/5">
               <div className="flex flex-col">
-                <span className="font-serif text-2xl tracking-tighter text-charcoal uppercase leading-none">
+                <span className="font-serif text-2xl tracking-tighter text-cream uppercase leading-none">
                   Holy Land Grill
                 </span>
-                <span className="text-[8px] uppercase tracking-[0.4em] text-charcoal/60 font-bold mt-1">Mediterranean Soul</span>
+                <span className="text-[8px] uppercase tracking-[0.4em] text-gold/60 font-bold mt-1">Mediterranean Soul</span>
               </div>
-              <button onClick={() => setMobileMenuOpen(false)} className="text-charcoal p-2 border border-charcoal/20 rounded-full">
+              <button 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="text-white p-3 border border-white/10 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="Close menu"
+              >
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-center gap-8 pb-12">
-              {navLinks.map((link) => (
-                <a
+            {/* Mobile Menu Content - Centered */}
+            <div className="flex-1 flex flex-col items-center justify-center gap-10 px-8">
+              {navLinks.map((link, idx) => (
+                <motion.a
                   key={link.name}
                   href={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-4xl md:text-6xl font-serif text-charcoal hover:text-white transition-colors italic leading-none"
+                  className="group flex flex-col items-center gap-2"
                 >
-                  {link.name}
-                </a>
+                  <span className="text-[10px] uppercase tracking-[0.4em] text-gold/40 font-bold">0{idx + 1}</span>
+                  <span className="text-5xl md:text-7xl font-serif text-cream group-hover:text-gold transition-colors italic tracking-tighter">
+                    {link.name}
+                  </span>
+                </motion.a>
               ))}
-              <a
+              
+              <motion.a
                 href={TOAST_ORDER_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 px-12 py-6 bg-charcoal text-white text-center text-xs uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-charcoal transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                className="mt-8 px-12 py-5 bg-gold text-charcoal text-[11px] uppercase tracking-[0.4em] font-black rounded-sm shadow-xl flex items-center gap-3"
               >
+                <ShoppingBag className="w-4 h-4" />
                 Order Now
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         )}

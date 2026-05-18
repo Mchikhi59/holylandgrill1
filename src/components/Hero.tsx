@@ -28,7 +28,7 @@ export default function Hero() {
 
       {/* Content Overlay */}
       <div className="relative z-20 container mx-auto px-6 pt-20">
-        <div className="max-w-4xl">
+        <div className="max-w-6xl p-8 md:p-12 bg-charcoal/20 backdrop-blur-sm rounded-3xl border border-white/5">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -38,10 +38,8 @@ export default function Hero() {
               Est. 2024 • Authentic Flavor
             </span>
             
-            <h1 className="font-serif text-7xl md:text-9xl xl:text-[11rem] mb-10 tracking-tighter leading-[0.85] text-cream drop-shadow-2xl">
-              The <br />
-              <span className="italic font-light gold-gradient">Holy Land</span><br />
-              <span className="text-white">Grill.</span>
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] mb-10 tracking-tighter leading-none text-cream drop-shadow-2xl">
+              Holy Land <span className="italic font-light gold-gradient">Grill.</span>
             </h1>
 
             <motion.p 
