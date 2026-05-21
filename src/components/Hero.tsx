@@ -7,7 +7,7 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 500], [0, 200]);
 
   return (
-    <section id="home" className="relative h-[90vh] md:h-screen w-full flex items-center overflow-hidden">
+    <section id="home" className="relative h-[100dvh] w-full flex items-center overflow-hidden">
       {/* Background Image Container */}
       <motion.div 
         initial={{ scale: 1.1, opacity: 0 }}
@@ -51,19 +51,19 @@ export default function Hero() {
               Experience the true taste of Mediterranean street food, where ancient recipes meet modern passion. Sizzling shawarmas, crispy falafels, and soulful spices.
             </motion.p>
             
-            <div className="flex flex-wrap gap-8">
+            <div className="flex gap-3 md:gap-8 w-full md:w-auto">
               <a 
                 href={TOAST_ORDER_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative px-14 py-6 bg-gold text-charcoal font-black uppercase tracking-[0.3em] text-[11px] overflow-hidden rounded-sm transition-all shadow-2xl hover:shadow-gold/20"
+                className="group relative flex-1 md:flex-initial text-center justify-center flex items-center px-4 py-4 md:px-14 md:py-6 bg-gold text-charcoal font-black uppercase tracking-[0.15em] md:tracking-[0.3em] text-[10px] md:text-[11px] overflow-hidden rounded-sm transition-all shadow-2xl hover:shadow-gold/20"
               >
                 <span className="relative z-10">Order Now</span>
                 <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </a>
               <a 
                 href="#menu"
-                className="px-14 py-6 border-2 border-white/20 backdrop-blur-md text-white font-black uppercase tracking-[0.3em] text-[11px] hover:border-gold hover:text-gold transition-all duration-300 rounded-sm"
+                className="flex-1 md:flex-initial text-center justify-center flex items-center px-4 py-4 md:px-14 md:py-6 border-2 border-white/20 backdrop-blur-md text-white font-black uppercase tracking-[0.15em] md:tracking-[0.3em] text-[10px] md:text-[11px] hover:border-gold hover:text-gold transition-all duration-300 rounded-sm"
               >
                 Explore Menu
               </a>

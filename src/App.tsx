@@ -44,7 +44,7 @@ export default function App() {
         {/* Global Background Image with Overlay */}
         <div className="fixed inset-0 z-[-1] overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-30 grayscale-[0.1]"
+            className="absolute inset-0 bg-cover bg-center opacity-30 grayscale-[0.1]"
             style={{ backgroundImage: `url('https://i.postimg.cc/h4Nfdsdk/log-holy.jpg')` }}
             aria-hidden="true"
           />
