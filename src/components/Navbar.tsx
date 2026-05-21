@@ -48,7 +48,14 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="group flex items-center gap-4">
+        <a 
+          href="/" 
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "/";
+          }}
+          className="group flex items-center gap-4"
+        >
           <div className="relative h-12 w-12 bg-sage rounded-sm flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
             <img 
               src={LOGO_URL} 
@@ -63,7 +70,7 @@ export default function Navbar() {
             </span>
             <span className="text-[8px] uppercase tracking-[0.4em] text-gold/60 font-bold mt-1">Mediterranean Soul</span>
           </div>
-        </Link>
+        </a>
 
         {/* Desktop Links - Right Aligned */}
         <div className="hidden lg:flex items-center gap-12">
